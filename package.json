@@ -1,0 +1,12 @@
+{
+  "name": "auto_fontend",
+  "version": "1.0.0",
+  "description": "auto tools for frontend testing",
+  "main": "",
+  "author": "Bowen Zhong <bz4e14@soton.ac.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "puppeteer": "^0.11.0"
+  }
+}
