@@ -1,4 +1,4 @@
-module.exports = function getValueFromJSONStr (str, prop) {
+function getValueFromJSONStr (str, prop) {
   let json;
   let type = Object.prototype.toString.call(str);
   switch (type) {
@@ -23,3 +23,5 @@ module.exports = function getValueFromJSONStr (str, prop) {
 
   return null;
 };
+
+module.exports = getValueFromJSONStr;
