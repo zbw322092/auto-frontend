@@ -16,7 +16,6 @@ function ajaxListener(page) {
       console.log(chalk.bgBlueBright(`${chalk.bold(functionCode)} ajax REQUEST is: `));
       console.log(chalk.bold(' request url: '), chalk.green(req.url));
       console.log(chalk.bold(' request data function code: '), chalk.green(functionCode));
-      console.log(chalk.bold(' request data: \n'), prettyJSON(req.postData));
     }
   });
 
@@ -26,7 +25,7 @@ function ajaxListener(page) {
 
       let functionCode = getValueFromJSONStr(res.request().postData, 'functionCode');
 
-      console.log(chalk.bgBlueBright(`${chalk.bold(functionCode)} ajax RESPONSE is: `));
+      console.log(chalk.bgCyanBright(`${chalk.bold(functionCode)} ajax RESPONSE is: `));
       console.log(chalk.bold(' response status: '), chalk.green(res.status));
       res.json().then((data) => {
 
@@ -34,7 +33,6 @@ function ajaxListener(page) {
 
         console.log(chalk.bold(' response data code: '), chalk.green(getValueFromJSONStr(data, 'code')));
         console.log(chalk.bold(' response message: '), chalk.green(getValueFromJSONStr(data, 'message')));
-        console.log(chalk.bold(' response data: \n'), prettyJSON(getValueFromJSONStr(data, 'data')));
       });
     }
   });
