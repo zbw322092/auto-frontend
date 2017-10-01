@@ -26,6 +26,15 @@ https://rupl.github.io/frontend-testing/#/  <br>
 [1] Body.json()
 https://developer.mozilla.org/en-US/docs/Web/API/Body/json <br>
 
+## Regex
+[1] Check if string contains only digits
+https://stackoverflow.com/questions/1779013/check-if-string-contains-only-digits <br>
+
+[2] regular expression to allow only integer and decimal [duplicate]
+https://stackoverflow.com/questions/12475704/regular-expression-to-allow-only-integer-and-decimal <br>
+
+[3] Regex matching all but not empty
+https://stackoverflow.com/a/38874477 <br>
 
 ## Errors
 [1] Parsing JSON giving “unexpected token o” error [duplicate]
@@ -36,3 +45,4 @@ https://stackoverflow.com/questions/42225480/await-unexpected-identifier-on-node
 
 [3] How do you share an EventEmitter in node.js?
 https://stackoverflow.com/questions/10659266/how-do-you-share-an-eventemitter-in-node-js <br>
+

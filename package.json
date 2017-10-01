@@ -6,6 +6,7 @@
   "author": "Bowen Zhong <bz4e14@soton.ac.uk>",
   "license": "MIT",
   "dependencies": {
+    "ajv": "^5.2.3",
     "chalk": "^2.1.0",
     "lodash": "^4.17.4",
     "prettyjson": "^1.2.1",
