@@ -29,4 +29,10 @@ https://developer.mozilla.org/en-US/docs/Web/API/Body/json <br>
 
 ## Errors
 [1] Parsing JSON giving “unexpected token o” error [duplicate]
-https://stackoverflow.com/questions/15617164/parsing-json-giving-unexpected-token-o-error
+https://stackoverflow.com/questions/15617164/parsing-json-giving-unexpected-token-o-error <br>
+
+[2] 'await Unexpected identifier' on Node.js 7.5
+https://stackoverflow.com/questions/42225480/await-unexpected-identifier-on-node-js-7-5 <br>
+
+[3] How do you share an EventEmitter in node.js?
+https://stackoverflow.com/questions/10659266/how-do-you-share-an-eventemitter-in-node-js <br>

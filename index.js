@@ -1,10 +1,12 @@
 const puppeteer = require('puppeteer');
 const chalk = require('chalk');
 
+const ajaxEmitter = require('./shared/ajaxEventEmitter.js');
+
 const getValueFromJSONStr = require('./utils/getValueFromJSONStr.js');
 const prettyJSON = require('./utils/prettyJSON.js');
 
-const { crowdInvest } = require('./_private/entries.js');
+const investSuite = require('./test_suites/suite-invest.js');
 
 puppeteer.launch({
   executablePath: '/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
@@ -13,16 +15,7 @@ puppeteer.launch({
 
   ajaxListener(page);
 
-  await page.goto(crowdInvest.local);
-
-  const buttons = await page.$('.purchase-btn');
-
-  await buttons.click();
-
-  await page.screenshot({
-    path: './screenshots/view.png',
-    fullPage: true
-  });
+  await investSuite(page);
 
   // other actions...
   await browser.close();
@@ -32,6 +25,9 @@ function ajaxListener (page) {
 
   page.on('request', (req) => {
     if (req.resourceType === 'XHR') {
+      
+      ajaxEmitter.emit('reqData', req.postData);
+
       console.log(chalk.bgBlueBright('Your ajax REQUEST is: '));
       console.log(chalk.bold(' request url: '), chalk.green(req.url));
       console.log(chalk.bold(' request data function code: '), chalk.green(getValueFromJSONStr(req.postData, 'functionCode')) );
@@ -45,6 +41,9 @@ function ajaxListener (page) {
       console.log(chalk.bgCyanBright('Your ajax RESPONSE is: '));
       console.log(chalk.bold(' response status: '), chalk.green(res.status));
       res.json().then((data) => {
+
+        ajaxEmitter.emit('resData', data);
+
         console.log(chalk.bold(' response data code: '), chalk.green(getValueFromJSONStr(data, 'code')) );
         console.log(chalk.bold(' response message: '), chalk.green(getValueFromJSONStr(data, 'message')) );
         console.log(chalk.bold(' response data: \n'), prettyJSON(getValueFromJSONStr(data, 'data')) );
