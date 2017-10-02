@@ -10,15 +10,18 @@ async function investSuite(page) {
   schemaValidator(validCfGearChoice, 'cf_gear_choice');
 
   await page.goto(crowdInvest.local);
+  console.log()
 
-  const buttons = await page.$('.purchase-btn');
+  const buttons = await page.$("button[class = 'purchase-btn ng-scope']");
 
   await buttons.click();
-
+  
   await page.screenshot({
     path: './screenshots/view.png',
     fullPage: true
   });
+  
+  
 }
 
 module.exports = investSuite;

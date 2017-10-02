@@ -16,7 +16,6 @@ https://medium.com/@e_mad_ehsan/getting-started-with-puppeteer-and-chrome-headle
 [3] Installing PhantomJS on Mac
 https://stackoverflow.com/questions/36993962/installing-phantomjs-on-mac <br>
 
-[4] 
 
 ## front-end testing
 [1] Automated Frontend Testing
@@ -36,6 +35,11 @@ https://stackoverflow.com/questions/12475704/regular-expression-to-allow-only-in
 [3] Regex matching all but not empty
 https://stackoverflow.com/a/38874477 <br>
 
+### CSS
+[1] How to select elements with exact one class name?
+https://stackoverflow.com/a/11266889 <br>
+
+
 ## Errors
 [1] Parsing JSON giving “unexpected token o” error [duplicate]
 https://stackoverflow.com/questions/15617164/parsing-json-giving-unexpected-token-o-error <br>
@@ -46,3 +50,9 @@ https://stackoverflow.com/questions/42225480/await-unexpected-identifier-on-node
 [3] How do you share an EventEmitter in node.js?
 https://stackoverflow.com/questions/10659266/how-do-you-share-an-eventemitter-in-node-js <br>
 
+## others
+[1] Getting fancy with the console
+https://www.thecssninja.com/javascript/console <br> 
+
+[2] How to Hack the Developer Console to be Needlessly Interactive
+https://konklone.com/post/how-to-hack-the-developer-console-to-be-needlessly-interactive <br>
