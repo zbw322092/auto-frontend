@@ -12,13 +12,9 @@ let reqSchema = {
     "projectId": {
       "type": "string",
       "pattern": notEmptyStr
-    },
-    "test": {
-      "type": "string",
-      "pattern": notEmptyStr
     }
   },
-  "required": ["projectId", "test"]
+  "required": ["projectId"]
 };
 
 let resSchema = {
