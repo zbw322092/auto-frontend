@@ -1,6 +1,6 @@
 const schemaValidator = require('../shared/schemaValidator.js');
 const validCfGearDetail = require('../schema/invest/schema-cfGearDetail.js');
-const validCfGearChoice = require('../schema/invest/shema-cfGearChoice.js');
+const validCfGearChoice = require('../schema/invest/schema-cfGearChoice.js');
 
 const { crowdInvest } = require('../_private/entries.js');
 
