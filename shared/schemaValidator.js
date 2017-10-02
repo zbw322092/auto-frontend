@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const getValueFromJSONStr = require('../utils/getValueFromJSONStr.js');
 const prettyJSON = require('../utils/prettyJSON.js');
 const ajaxEmitter = require('./ajaxEventEmitter.js');
+const { reqValid, reqInvalid, resValid, resInvalid } = require('./console.js');
 
 function schemaValidator(validator, funcCode) {
   ajaxEmitter.on('reqData', (data) => {
@@ -10,10 +11,10 @@ function schemaValidator(validator, funcCode) {
     let functionCode = getValueFromJSONStr(data, 'functionCode');
     if (funcCode !== functionCode) return;
     if (validator.req(param)) {
-      console.log(chalk.bgBlueBright(`${chalk.bold(functionCode)} REQUEST is: `), chalk.green('valid'));
+      reqValid({ functionCode });
     } else {
-      console.log(chalk.bgBlueBright(`${chalk.bold(functionCode)} REQUEST is: `), chalk.red('invalid'));
-      console.log(`Invalid reason: \n${prettyJSON(validator.req.errors[0])}`);
+      let error = validator.req.errors[0];
+      reqInvalid({ functionCode, error });
     }
   });
   
@@ -22,10 +23,10 @@ function schemaValidator(validator, funcCode) {
     let valid = validator.res(data['data']);
     if (funcCode !== functionCode) return;
     if (valid) {
-      console.log(chalk.bgCyanBright(`${chalk.bold(functionCode)} RESPONSE is: `), chalk.green('valid'));
+      resValid({ functionCode });
     } else {
-      console.log(chalk.bgCyanBright(`${chalk.bold(functionCode)} RESPONSE is: `), chalk.red('invalid'));
-      console.log(`Invalid reason: \n${prettyJSON(validator.res.errors[0])}`);
+      let error = validator.res.errors[0];
+      resInvalid({ functionCode, error });
     }
   });
 }

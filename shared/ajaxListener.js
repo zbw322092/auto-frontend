@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 
 const ajaxEmitter = require('./ajaxEventEmitter.js');
+const { reqConsole, resConsole } = require('./console.js');
 const getValueFromJSONStr = require('../utils/getValueFromJSONStr.js');
 const prettyJSON = require('../utils/prettyJSON.js');
 
@@ -9,13 +10,15 @@ function ajaxListener(page) {
   page.on('request', (req) => {
     if (req.resourceType === 'XHR') {
 
-      ajaxEmitter.emit('reqData', req.postData);
-
       let functionCode = getValueFromJSONStr(req.postData, 'functionCode');
+      let reqUrl = req.url;
 
-      console.log(chalk.bgBlueBright(`${chalk.bold(functionCode)} ajax REQUEST is: `));
-      console.log(chalk.bold(' request url: '), chalk.green(req.url));
-      console.log(chalk.bold(' request data function code: '), chalk.green(functionCode));
+      reqConsole({
+        functionCode: functionCode,
+        url: reqUrl
+      });
+
+      ajaxEmitter.emit('reqData', req.postData);
     }
   });
 
@@ -24,15 +27,15 @@ function ajaxListener(page) {
     if (request.resourceType === 'XHR') {
 
       let functionCode = getValueFromJSONStr(res.request().postData, 'functionCode');
+      let status = res.status;
 
-      console.log(chalk.bgCyanBright(`${chalk.bold(functionCode)} ajax RESPONSE is: `));
-      console.log(chalk.bold(' response status: '), chalk.green(res.status));
       res.json().then((data) => {
+        let code = getValueFromJSONStr(data, 'code');
+        let message = getValueFromJSONStr(data, 'message');
 
-        ajaxEmitter.emit('resData', data, {functionCode});
+        resConsole({ functionCode, status, code, message});
 
-        console.log(chalk.bold(' response data code: '), chalk.green(getValueFromJSONStr(data, 'code')));
-        console.log(chalk.bold(' response message: '), chalk.green(getValueFromJSONStr(data, 'message')));
+        ajaxEmitter.emit('resData', data, {functionCode});        
       });
     }
   });

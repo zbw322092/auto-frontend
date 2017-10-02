@@ -1,3 +1,4 @@
+const { enterPageConsole } = require('../shared/console.js');
 const schemaValidator = require('../shared/schemaValidator.js');
 const validCfGearDetail = require('../schema/invest/schema-cfGearDetail.js');
 const validCfGearChoice = require('../schema/invest/schema-cfGearChoice.js');
@@ -8,9 +9,10 @@ async function investSuite(page) {
 
   schemaValidator(validCfGearDetail, 'cf_gear_detail');
   schemaValidator(validCfGearChoice, 'cf_gear_choice');
-
+  
+  enterPageConsole({title: 'Invest Grade Select'});
   await page.goto(crowdInvest.local);
-  console.log()
+  
 
   const buttons = await page.$("button[class = 'purchase-btn ng-scope']");
 
