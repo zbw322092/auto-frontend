@@ -1,8 +1,6 @@
 function getValueFromJSONStr(str, prop) {
   let result;
-  
   function loop (str, prop) {
-    
     let json;
     let type = Object.prototype.toString.call(str);
     switch (type) {
@@ -13,7 +11,7 @@ function getValueFromJSONStr(str, prop) {
         json = str;
         break;
       default:
-        throw new Error('Unexpected data type');
+        return;
     }
 
     for (let k in json) {

@@ -21,6 +21,9 @@ async function investSuite(page) {
 
   await page.waitForSelector("button[class = 'right-part']", { visible: true });
   
+  // Bottomup dialog totally show up after arount 500ms animation, 
+  // before this bottomup totally show up, we cannot click the bottom on it, 
+  // so we add waitForAWhile util to solve this problem.
   await waitForAWhile(600);
   
   const btn = await page.$("button[class = 'right-part']");
