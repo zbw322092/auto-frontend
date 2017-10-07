@@ -36,8 +36,7 @@ let resSchema = {
       "type": "integer"
     },
     canInvestNum: {
-      "type": "string",
-      "pattern": onlyContainNum
+      "type": "integer"
     },
     remainStock: {
       "type": "string",

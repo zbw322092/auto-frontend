@@ -5,7 +5,7 @@ const prettyJSON = require('../utils/prettyJSON.js');
 const ajaxEmitter = require('./ajaxEventEmitter.js');
 const { reqValid, reqInvalid, resValid, resInvalid } = require('./console.js');
 
-function schemaValidator(validator, funcCode) {
+function schemaValidator(validator, funcCode, resHandler) {
   ajaxEmitter.on('reqData', (data) => {
     let param = getValueFromJSONStr(data, 'param');
     let functionCode = getValueFromJSONStr(data, 'functionCode');
